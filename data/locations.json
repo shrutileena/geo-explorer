@@ -1,0 +1,14 @@
+[
+    {
+        "name": "India Gate",
+        "lat": 28.6129,
+        "lng": 77.2295,
+        "description": "Famous War Memorial in New Delhi"
+    },
+    {
+        "name": "Red Fort",
+        "lat": 28.6562,
+        "lng": 77.2410,
+        "description": "Historic fort in the city of Delhi"
+    }
+]

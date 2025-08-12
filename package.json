@@ -7,11 +7,14 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Shruti Agarwal",
   "license": "ISC",
   "type": "commonjs",
   "description": "",
   "devDependencies": {
     "live-server": "^1.2.2"
+  },
+  "dependencies": {
+    "leaflet-canvas-markers": "^1.0.7"
   }
 }

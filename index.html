@@ -10,26 +10,89 @@
 
     <!-- Your styles -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <meta name="author" content="Shruti Agarwal">
 </head>
 <body>
     <header>
-        Map Project | <a href="#" style="color: #ddd;">Home</a> | <a href="#" style="color: #ddd;">About</a>
+        Map Project | <a href="views/home.html" style="color: #ddd;">Home</a> | <a href="views/about.html" style="color: #ddd;">About</a>
+        <div id="date_time">
+            <span id="date" class="date_time_values"></span>
+            <span class="divider">|</span>
+            <span id="time" class="date_time_values"></span>
+        </div>
     </header>
 
     <div id="map"></div>
 
+    <!-- Map Type Button -->
+    <button id="map_type"><img id="map_type_img" src="assets/icons/map.png" alt="Map Type"></button>
+
+    <!-- Modal to show map types -->
+    <div id="map_type_modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal_header">
+                <h3 class="modal_heading">Map Type</h3>
+                <span class="close_btn" id="map_type_close_btn">&times;</span>
+            </div>
+            <hr>
+            <form id="map_type_form">
+                <label>
+                    <input type="radio" name="mapType" value="osm" checked>
+                    OpenStreetMap
+                </label> <br>
+                <label>
+                    <input type="radio" name="mapType" value="satellite">
+                    Satellite
+                </label> <br>
+                <label>
+                    <input type="radio" name="mapType" value="cartoDark">
+                    Carto Dark
+                </label> <br>
+                <label>
+                    <input type="radio" name="mapType" value="cartoLight">
+                    Carto Light
+                </label>
+            </form>
+        </div>
+    </div>
+
+    <!-- Zoom Control Buttons -->
+    <div id="custom_zoom">
+        <button id="zoom-in">+</button>
+        <button id="zoom-out">-</button>
+    </div>
+
+    <!-- Panel to show cursor Lat Long -->
     <div id="lat_lng_info">
         <div id="lat_info"></div>
         <div id="lng_info"></div>
         <div id="lat_lng_combined"></div>
     </div>
 
+    <!-- leaflet version modal -->
+    <div id="leaflet_version">
+        <span>Leaflet Version : 1.9.4</span>
+    </div>
+
     <footer>
-        &copy; 2025 Map Project
+        <!-- &copy; 2025 Map Project -->
+        <div id="footer_info">
+            <!-- <i class="fa-solid fa-circle-info info_icon" id="info_icon"></i> -->
+            <span class="developed_by">Developed with ❤️ by <span>Shruti</span></span>
+        </div>
     </footer>
 
     <!-- Leaflet JS -->
+    <!-- Using Leaflet version 1.9.4 -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <!-- leaflet-canvas-marker plugin -->
+    <!-- <script src="https://unpkg.com/leaflet-canvas-marker@latest/dist/leaflet.canvas-marker.min.js"></script> -->
+    <script src="https://unpkg.com/leaflet-canvas-markers/dist/leaflet.canvas-markers.js"></script>
 
     <script type="module" src="js/main.js"></script>
     <!-- <script src="js/layers.js"></script>

@@ -209,3 +209,46 @@ footer {
 .leaflet-control-layers-list {
     color: black;
 }
+
+.info.legend {
+    background-color: #333;
+    margin: 0.5rem 0.3rem;
+    padding: 0.5em 1rem;
+    border-radius: 0.2rem;
+    color: white;
+    box-shadow: 0 0 1rem rgba(0,0,0,0.3);
+}
+
+.info.legend h4 {
+  margin: 0 0 5px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.info.legend i {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 6px;
+  border-radius: 3px;
+}
+
+/* Scale control box */
+.leaflet-control-scale-line {
+    background: #333 !important;
+    color: white;
+    border: 2px solid gray;
+    border-top: none;
+    padding: 2px 5px 1px;
+    white-space: nowrap;
+    text-shadow: none;
+}
+
+/* draw toolbar */
+/* .leaflet-draw-section {
+    background: #333;
+} */
+
+.leaflet-draw-draw-polyline {
+    /* background: #333 !important; */
+}

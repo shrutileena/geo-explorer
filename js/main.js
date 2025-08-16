@@ -45,6 +45,15 @@ events.addDateAndTime();
 // Add date and time every seconds
 setInterval(events.addDateAndTime, 1000);
 
+// Draw controls
+events.drawControls();
+
+// Scale Bar
+events.scaleBar();
+
+// Legend control
+events.legendControl();
+
 // leaflet version
 let leafletVersion = events.getLeafletVersion();
 

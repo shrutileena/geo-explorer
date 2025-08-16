@@ -128,10 +128,89 @@ function getLeafletVersion() {
 //     document.getElementById('leaflet_version').style.display = 'block';
 // })
 
+const customMarkerIcon = L.icon({
+    iconUrl: '../assets/icons/location-pin.png',
+    iconSize: [35, 35],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -32]
+})
+
+// Function for drawing anything on map
+function drawControls() {
+    // Create a FeatureGroup to store drawn items
+    const drawnItems = new L.FeatureGroup();
+    map.addLayer(drawnItems);
+
+    // Add the drawn control
+    const drawControl = new L.Control.Draw({
+        edit: {
+            featureGroup: drawnItems    // allows editing, deleting
+        },
+        draw: {
+            polygon: {
+                shapeOptions: {
+                    color: 'yellow'
+                }
+            },
+            polyline: {
+                shapeOptions: {
+                    color: 'blue'
+                }
+            },
+            rectangle: {
+                shapeOptions: {
+                    color: 'green'
+                }
+            },
+            circle: {
+                shapeOptions: {
+                    color: 'orange'
+                }
+            },
+            marker: {
+                icon: customMarkerIcon
+            }
+        }
+    });
+
+    map.addControl(drawControl);
+
+    // Handle the event when a shape is created
+    map.on(L.Draw.Event.CREATED, function(e) {
+        console.log('SHRUTI')
+        const layer = e.layer;
+        drawnItems.addLayer(layer);
+    });
+}
+
+function scaleBar() {
+    L.control.scale().addTo(map);
+}
+
+function legendControl() {
+    const legend = L.control({ position: "bottomleft" });
+
+    legend.onAdd = function (map) {
+      const div = L.DomUtil.create("div", "info legend");
+      div.innerHTML = `
+        <h4>Legend</h4>
+        <!--<i style="background: red"></i> Cities <br>
+        <i style="background: blue"></i> Rivers <br>-->
+        <img src="../assets/icons/location-pin.png" style="width:15px;height:15px;"> Landmarks <br>
+        `;
+      return div;
+    };
+
+    legend.addTo(map);
+}
+
 export {
     attachMapEvents,
     displayLatLongOfCursor,
     zoomControls,
     addDateAndTime,
-    getLeafletVersion
+    getLeafletVersion,
+    drawControls,
+    scaleBar,
+    legendControl
 }

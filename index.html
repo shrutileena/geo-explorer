@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,12 @@
     <!-- Leaflet.draw CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet-draw/dist/leaflet.draw.css" />
 
+    <!-- Fullscreen plugin CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.fullscreen/Control.FullScreen.css" />
+
+    <!-- Leaflet LocateControl CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
+
     <!-- Your styles -->
     <link rel="stylesheet" href="css/style.css">
 
@@ -23,9 +30,17 @@
 
     <meta name="author" content="Shruti Agarwal">
 </head>
+
 <body>
     <header>
-        Map Project | <a href="views/home.html" style="color: #ddd;">Home</a> | <a href="views/about.html" style="color: #ddd;">About</a>
+        <nav>
+            <a href="views/home.html" style="color: #ddd;" title="Home"><img id="home_img" src="assets/icons/home.png" alt="HOme"></a> <span style="color: rgb(126, 122, 122);">|</span>
+            <a href="views/about.html" style="color: #ddd; font-size: 1.1rem;" title="About Us"><img id="aboutus_img" src="assets/icons/information.png" alt="About Us"></a>
+        </nav>
+        <div class="header-center">
+            <img src="assets/icons/planet-earth.png" id="earth_img" alt="Icon">
+            <span>GeoExplorer</span>
+        </div>
         <div id="date_time">
             <span id="date" class="date_time_values"></span>
             <span class="divider">|</span>
@@ -33,58 +48,59 @@
         </div>
     </header>
 
-    <div id="map"></div>
+    <div id="map">
 
-    <!-- Map Type Button -->
-    <button id="map_type"><img id="map_type_img" src="assets/icons/map.png" alt="Map Type"></button>
+        <!-- Map Type Button -->
+        <button id="map_type" title="Map Type"><img id="map_type_img" src="assets/icons/map.png" alt="Map Type"></button>
 
-    <!-- Modal to show map types -->
-    <div id="map_type_modal" style="display: none;">
-        <div class="modal-content">
-            <div class="modal_header">
-                <h3 class="modal_heading">Map Type</h3>
-                <span class="close_btn" id="map_type_close_btn">&times;</span>
+        <!-- Modal to show map types -->
+        <div id="map_type_modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal_header">
+                    <h3 class="modal_heading">Map Type</h3>
+                    <span class="close_btn" id="map_type_close_btn">&times;</span>
+                </div>
+                <hr>
+                <form id="map_type_form">
+                    <label>
+                        <input type="radio" name="mapType" value="osm" checked>
+                        OpenStreetMap
+                    </label> <br>
+                    <label>
+                        <input type="radio" name="mapType" value="satellite">
+                        Satellite
+                    </label> <br>
+                    <label>
+                        <input type="radio" name="mapType" value="cartoDark">
+                        Carto Dark
+                    </label> <br>
+                    <label>
+                        <input type="radio" name="mapType" value="cartoLight">
+                        Carto Light
+                    </label>
+                </form>
             </div>
-            <hr>
-            <form id="map_type_form">
-                <label>
-                    <input type="radio" name="mapType" value="osm" checked>
-                    OpenStreetMap
-                </label> <br>
-                <label>
-                    <input type="radio" name="mapType" value="satellite">
-                    Satellite
-                </label> <br>
-                <label>
-                    <input type="radio" name="mapType" value="cartoDark">
-                    Carto Dark
-                </label> <br>
-                <label>
-                    <input type="radio" name="mapType" value="cartoLight">
-                    Carto Light
-                </label>
-            </form>
         </div>
-    </div>
 
-    <!-- Zoom Control Buttons -->
-    <div id="custom_zoom">
-        <button id="zoom-in">+</button>
-        <button id="zoom-out">-</button>
-    </div>
+        <!-- Zoom Control Buttons -->
+        <div id="custom_zoom">
+            <button id="zoom-in" title="Zoom In">+</button>
+            <button id="zoom-out" title="Zoom Out">-</button>
+        </div>
 
-    <!-- Panel to show cursor Lat Long -->
-    <div id="lat_lng_info">
-        <div id="lat_info"></div>
-        <div id="lng_info"></div>
-        <div id="lat_lng_combined"></div>
-    </div>
+        <!-- Panel to show cursor Lat Long -->
+        <div id="lat_lng_info">
+            <div id="lat_info"></div>
+            <div id="lng_info"></div>
+            <div id="lat_lng_combined"></div>
+        </div>
 
-    <!-- leaflet version modal -->
-    <div id="leaflet_version">
-        <span>Leaflet Version : 1.9.4</span>
-    </div>
+        <!-- leaflet version modal -->
+        <div id="leaflet_version">
+            <span>Leaflet Version : 1.9.4</span>
+        </div>
 
+    </div>
     <footer>
         <!-- &copy; 2025 Map Project -->
         <div id="footer_info">
@@ -108,6 +124,12 @@
     <!-- Leaflet.draw JS -->
     <script src="https://unpkg.com/leaflet-draw/dist/leaflet.draw.js"></script>
 
+    <!-- Fullscreen plugin JS -->
+    <script src="https://unpkg.com/leaflet.fullscreen/Control.FullScreen.js"></script>
+
+    <!-- Leaflet LocateControl JS -->
+    <script src="https://unpkg.com/leaflet.locatecontrol/dist/L.Control.Locate.min.js"></script>
+
     <script type="module" src="js/main.js"></script>
     <!-- <script src="js/layers.js"></script>
     <script src="js/markers.js"></script>
@@ -115,4 +137,5 @@
     <script src="js/utils.js"></script>
     <script src="js/dataLoader.js"></script> -->
 </body>
+
 </html>

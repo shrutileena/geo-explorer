@@ -11,13 +11,52 @@ hr {
 }
 
 header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background: #333;
     color: white;
     padding: 10px 20px;
     font-size: 18px;
 }
 
+nav {
+    order: 1;   /*left*/
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.header-center {
+    order: 2;   /*center*/
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-left: 5rem;
+    font-weight: 200;
+}
+
+#home_img {
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-top: 0.4rem;
+    margin-left: -0.4rem;
+}
+
+#aboutus_img {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-top: 0.4rem;
+    /* margin-left: -0.4rem; */
+}
+
+#earth_img {
+    width: 1.8rem;
+    height: 1.7rem;
+}
+
 #date_time {
+    order: 3;   /*right*/
     float: right;
     gap: 0.5rem;
 }
@@ -92,7 +131,7 @@ footer {
 #lat_lng_info {
     position: absolute;
     /* top: 84%; */
-    bottom: 7%;
+    bottom: 0.5rem;
     /* left: 1%; */
     right: 1%;
     padding: 6px 10px;
@@ -101,9 +140,9 @@ footer {
     z-index: 1000;
     /* transform: translateX(-50%); */
     box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    border-radius: 0.5rem;
+    border-radius: 0.4rem;
     font-size: 0.8rem;
-    pointer-events: none;
+    /* pointer-events: none; */
 }
 
 #custom_zoom {
@@ -117,23 +156,23 @@ footer {
 }
 
 #zoom-in {
-    height: 35px;
-    width: 35px;
+    height: 25px;
+    width: 25px;
     background-color: #333;
     color: white;
     border: none;
     border-radius: 0.2rem;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
 }
 
 #zoom-out {
-    height: 35px;
-    width: 35px;
+    height: 25px;
+    width: 25px;
     background-color: #333;
     color: white;
     border: none;
     border-radius: 0.2rem;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
 }
 
 #map_type {
@@ -141,7 +180,7 @@ footer {
     z-index: 1000;
     background-color: #333;
     padding: 0.4rem;
-    top: 7.5%;
+    top: 1rem;
     right: 1%;
     border-radius: 0.2rem;
     border: none;
@@ -212,7 +251,7 @@ footer {
 
 .info.legend {
     background-color: #333;
-    margin: 0.5rem 0.3rem;
+    margin: 0.7rem 0.6rem;
     padding: 0.5em 1rem;
     border-radius: 0.2rem;
     color: white;
@@ -240,6 +279,7 @@ footer {
     border: 2px solid gray;
     border-top: none;
     padding: 2px 5px 1px;
+    margin-left: 0.4rem;
     white-space: nowrap;
     text-shadow: none;
 }

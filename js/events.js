@@ -177,7 +177,6 @@ function drawControls() {
 
     // Handle the event when a shape is created
     map.on(L.Draw.Event.CREATED, function(e) {
-        console.log('SHRUTI')
         const layer = e.layer;
         drawnItems.addLayer(layer);
     });
@@ -204,6 +203,24 @@ function legendControl() {
     legend.addTo(map);
 }
 
+function addFullScreen() {
+    L.control.fullscreen({
+        position: 'topleft',
+        title: 'Show me fullscreen'
+    }).addTo(map)
+}
+
+function addLocateControl() {
+  L.control
+    .locate({
+      position: "topleft",
+      strings: {
+        title: "Show me where I am",
+      },
+    })
+    .addTo(map);
+}
+
 export {
     attachMapEvents,
     displayLatLongOfCursor,
@@ -212,5 +229,7 @@ export {
     getLeafletVersion,
     drawControls,
     scaleBar,
-    legendControl
+    legendControl,
+    addFullScreen,
+    addLocateControl
 }

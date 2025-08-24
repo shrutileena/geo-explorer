@@ -54,6 +54,12 @@ events.scaleBar();
 // Legend control
 events.legendControl();
 
+// Add Full Screen functionality
+events.addFullScreen();
+
+// To locate my own position
+events.addLocateControl();
+
 // leaflet version
 let leafletVersion = events.getLeafletVersion();
 

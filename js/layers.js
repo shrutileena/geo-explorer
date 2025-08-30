@@ -2,7 +2,8 @@
 function getOpenStreetMapTileLayer() {
     const baseLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
-        attribution: '&copy; OpenStreetMap contributors'
+        attribution: '&copy; OpenStreetMap contributors',
+        noWrap: true    // prevent world map from repeating
     });
     return baseLayer;
 }
@@ -39,7 +40,8 @@ function getMapboxTileLayer() {
 function getSatelliteTileLayer() {
     const baseLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
         attribution: 'Tiles &copy; Esri',
-        maxZoom: 20
+        maxZoom: 20,
+        noWrap: true    // prevent world map from repeating
     })
     return baseLayer;
 }
@@ -57,7 +59,8 @@ function getTopoTileLayer() {
 function getCartoLightTileLayer() {
     const baseLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
-        maxZoom: 20
+        maxZoom: 20,
+        noWrap: true    // prevent world map from repeating
     })
     return baseLayer;
 }
@@ -66,7 +69,8 @@ function getCartoLightTileLayer() {
 function getCartoDarkTileLayer() {
     const baseLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
-        maxZoom: 20
+        maxZoom: 20,
+        noWrap: true    // prevent world map from repeating
     })
     return baseLayer;
 }

@@ -6,8 +6,19 @@ import * as events from "./events.js";
 const map = L.map('map', {
     center: [28.6635, 77.3632], // Delhi Coordinates
     zoom: 13,
-    zoomControl: false  //disable default zoom controls
+    zoomControl: false,  //disable default zoom controls
+    // worldCopyJump: true // to jump the marker on the new map on dragging
 })
+
+// bounds the world map - only one world map will be shown
+const southWest = L.latLng(-90, -180);
+const northEast = L.latLng(90, 180);
+const bounds = L.latLngBounds(southWest, northEast);
+
+map.setMaxBounds(bounds);
+map.on('drag', function() {
+    map.panInsideBounds(bounds, { animate: false });
+});
 
 // Different map tiles 
 const osm = layers.getOpenStreetMapTileLayer();   // Open Street view
@@ -60,8 +71,8 @@ events.addFullScreen();
 // To locate my own position
 events.addLocateControl();
 
-// leaflet version
-let leafletVersion = events.getLeafletVersion();
+// Add Polyline Measure scale (Ruler)
+events.addPolylineMeasureScale();
 
 export {
     map

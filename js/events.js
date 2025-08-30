@@ -120,13 +120,7 @@ function addDateAndTime() {
     time.innerHTML = getCurrentTime();
 }
 
-function getLeafletVersion() {
-    return `Leaflet version:, ${L.version}`;
-}
-
-// document.getElementById('info_icon').addEventListener('click', function(e){
-//     document.getElementById('leaflet_version').style.display = 'block';
-// })
+document.getElementById("leaflet-version").textContent = `Leaflet v${L.version}`;
 
 const customMarkerIcon = L.icon({
     iconUrl: '../assets/icons/location-pin.png',
@@ -213,12 +207,24 @@ function addFullScreen() {
 function addLocateControl() {
   L.control
     .locate({
-      position: "topleft",
+      position: "topright",
       strings: {
-        title: "Show me where I am",
+        title: "Show your location",
       },
     })
     .addTo(map);
+}
+
+function addPolylineMeasureScale() {
+    L.control.polylineMeasure({
+        position: 'topright',
+        unit: 'metres',
+        // showBearings: true,
+        clearMeasurementsOnStop: true,
+        showClearControl: true,
+        showUnitControl: true,
+        measureControlClasses: ['my-measure-btn']   // It is for associating a custom class name with leaflet button to give custom css styling
+    }).addTo(map);
 }
 
 export {
@@ -226,10 +232,10 @@ export {
     displayLatLongOfCursor,
     zoomControls,
     addDateAndTime,
-    getLeafletVersion,
     drawControls,
     scaleBar,
     legendControl,
     addFullScreen,
-    addLocateControl
+    addLocateControl,
+    addPolylineMeasureScale
 }

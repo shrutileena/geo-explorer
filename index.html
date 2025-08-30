@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Map</title>
+    <title>GeoExplorer</title>
 
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
@@ -21,6 +21,9 @@
 
     <!-- Leaflet LocateControl CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
+
+    <!-- PolylineMeasure CSS -->
+    <link rel="stylesheet" href="https://ppete2.github.io/Leaflet.PolylineMeasure/Leaflet.PolylineMeasure.css" />
 
     <!-- Your styles -->
     <link rel="stylesheet" href="css/style.css">
@@ -95,16 +98,14 @@
             <div id="lat_lng_combined"></div>
         </div>
 
-        <!-- leaflet version modal -->
-        <div id="leaflet_version">
-            <span>Leaflet Version : 1.9.4</span>
-        </div>
-
     </div>
     <footer>
         <!-- &copy; 2025 Map Project -->
         <div id="footer_info">
-            <!-- <i class="fa-solid fa-circle-info info_icon" id="info_icon"></i> -->
+            <div class="info-btn">
+                <i class="fa-solid fa-circle-info info_icon" id="info_icon"></i>
+                <div class="tooltip" id="leaflet-version"></div>
+            </div>
             <span class="developed_by">Developed with ❤️ by <span>Shruti</span></span>
         </div>
     </footer>
@@ -129,6 +130,9 @@
 
     <!-- Leaflet LocateControl JS -->
     <script src="https://unpkg.com/leaflet.locatecontrol/dist/L.Control.Locate.min.js"></script>
+
+    <!-- PolylineMeasure JS -->
+    <script src="https://ppete2.github.io/Leaflet.PolylineMeasure/Leaflet.PolylineMeasure.js"></script>
 
     <script type="module" src="js/main.js"></script>
     <!-- <script src="js/layers.js"></script>

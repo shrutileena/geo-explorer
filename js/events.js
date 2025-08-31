@@ -227,6 +227,35 @@ function addPolylineMeasureScale() {
     }).addTo(map);
 }
 
+// function to update position of zoom controls and lat lng info 
+function updateControlPosition(isMinimized) {
+    const zoomDiv = document.getElementById('custom_zoom');
+    const latlngDiv = document.getElementById('lat_lng_info');
+
+    if (isMinimized) {
+      zoomDiv.classList.remove("shift-up");
+      latlngDiv.classList.remove("shift-up");
+    } else {
+      zoomDiv.classList.add("shift-up");
+      latlngDiv.classList.add("shift-up");
+    }
+}
+
+// function to add mini map on the map
+function addMiniMap() {
+    
+    const miniMapLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { minZoom: 0, maxZoom: 13 });
+    
+    const miniMap =  new L.Control.MiniMap(miniMapLayer, { position: 'bottomright', toggleDisplay: true }).addTo(map);
+
+    // checks initial stage of minimap and update position of other divs accordingly
+    updateControlPosition(miniMap._minimized);
+
+    // listens for minimize, restore events of mini map
+    miniMap.on("minimize", () => updateControlPosition(true));
+    miniMap.on("restore", () => updateControlPosition(false));
+}
+
 export {
     attachMapEvents,
     displayLatLongOfCursor,
@@ -237,5 +266,6 @@ export {
     legendControl,
     addFullScreen,
     addLocateControl,
-    addPolylineMeasureScale
+    addPolylineMeasureScale,
+    addMiniMap
 }

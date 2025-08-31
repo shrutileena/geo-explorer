@@ -74,6 +74,9 @@ events.addLocateControl();
 // Add Polyline Measure scale (Ruler)
 events.addPolylineMeasureScale();
 
+// add mini map
+events.addMiniMap();
+
 export {
     map
 }

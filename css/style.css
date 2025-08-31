@@ -153,9 +153,9 @@ footer {
 #lat_lng_info {
     position: absolute;
     /* top: 84%; */
-    bottom: 0.5rem;
+    bottom: 2.4rem;
     /* left: 1%; */
-    right: 1%;
+    right: 0.8%;
     padding: 6px 10px;
     background-color: #333;
     color: white;
@@ -165,16 +165,18 @@ footer {
     border-radius: 0.4rem;
     font-size: 0.8rem;
     /* pointer-events: none; */
+    transition: margin-bottom 0.1s ease-out;
 }
 
 #custom_zoom {
     position: absolute;
     z-index: 1000;
-    bottom: 17%;
-    right: 1%;
+    bottom: 7.2rem;
+    right: 0.8%;
     display: flex;
     flex-direction: column;
     gap: 3px;
+    transition: margin-bottom 0.1s ease-out;
 }
 
 #zoom-in {
@@ -195,6 +197,11 @@ footer {
     border: none;
     border-radius: 0.2rem;
     font-size: 1.4rem;
+}
+
+/* Helper class to move controls up */
+.shift-up{
+    margin-bottom: 8.5rem;
 }
 
 #map_type {

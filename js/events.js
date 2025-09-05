@@ -97,7 +97,7 @@ function getCurrentDate() {
 
     let year = today.getFullYear();
     let mon = String(today.getMonth()+1).padStart(2,'0');  // months are 0-based
-    let day = today.getDate();
+    let day = today.getDate().toString().padStart(2, '0');
 
     return `${day}-${mon}-${year}`;
 }
@@ -256,6 +256,93 @@ function addMiniMap() {
     miniMap.on("restore", () => updateControlPosition(false));
 }
 
+let downloadPanel = document.getElementById("downloadPanel");
+let downloadPanelBtn = document.getElementById("downloadPanelBtn");
+let downloadMapCloseBtn = document.getElementById("closeDownloadPanel");
+let downloadImgBtn = document.getElementById("downloadImg");
+let downloadPdfBtn = document.getElementById("downloadPdf");
+
+// Function to perform download of map as an Image or PDF
+function downloadMapOptions() {
+
+    // Event to open download panel
+    downloadPanelBtn.addEventListener('click', (e) => {
+        downloadPanel.style.display = 'block';
+    });
+
+    // Event to close download panel
+    downloadMapCloseBtn.addEventListener('click', (e) => {
+        downloadPanel.style.display = 'none';
+    })
+
+    const mapContainer = document.getElementById("map"); // your map div
+
+    // Event to download map as Image
+    downloadImgBtn.addEventListener('click', (e) => {
+        downloadPanel.style.display = 'none';
+
+        html2canvas(mapContainer, {
+          useCORS: true,
+          allowTaint: true,
+          logging: false,
+          ignoreElements: (el) => {
+            // Exclude only your custom download panel, but capture controls
+            return el.id === "downloadPanel";
+          },
+        })
+          .then((canvas) => {
+            // Create link element
+            const link = document.createElement("a");
+            link.download = "geo_explorer.png";
+            link.href = canvas.toDataURL("image/png");
+            // Append to DOM (needed for Firefox sometimes)
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          })
+          .catch((err) => {
+            console.error("Screenshot failed:", err);
+          });
+    })
+
+    // Event to download map as PDF
+    downloadPdfBtn.addEventListener('click', (e) => {
+        downloadPanel.style.display = 'none';
+
+        html2canvas(mapContainer, {
+          useCORS: true,
+          allowTaint: true,
+          logging: false,
+          ignoreElements: (el) => {
+            // Exclude only your custom download panel, but capture controls
+            return el.id === "downloadPanel";
+          },
+        })
+          .then((canvas) => {
+            const imgData = canvas.toDataURL("image/png");
+
+            // Create PDF
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF("landscape", "pt", "a4");
+
+            // Get PDF page width and height
+            const pageWidth = pdf.internal.pageSize.getWidth();
+            const pageHeight = pdf.internal.pageSize.getHeight();
+
+            // calculate image dimensions to fit to PDF
+            const imgWidth = pageWidth;
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+            pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
+
+            pdf.save("geoExplorer.pdf");
+          })
+          .catch((err) => {
+            console.error("PDF generation failed:", err);
+          });
+    })
+}
+
 export {
     attachMapEvents,
     displayLatLongOfCursor,
@@ -267,5 +354,6 @@ export {
     addFullScreen,
     addLocateControl,
     addPolylineMeasureScale,
-    addMiniMap
+    addMiniMap,
+    downloadMapOptions
 }

@@ -77,6 +77,8 @@ events.addPolylineMeasureScale();
 // add mini map
 events.addMiniMap();
 
+events.downloadMapOptions();
+
 export {
     map
 }

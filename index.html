@@ -42,6 +42,8 @@
         <nav>
             <a href="views/home.html" style="color: #ddd;" title="Home"><img id="home_img" src="assets/icons/home.png" alt="HOme"></a> <span style="color: rgb(126, 122, 122);">|</span>
             <a href="views/about.html" style="color: #ddd; font-size: 1.1rem;" title="About Us"><img id="aboutus_img" src="assets/icons/information.png" alt="About Us"></a>
+            <span style="color: rgb(126, 122, 122);">|</span>
+            <button id="downloadPanelBtn" title="Download Map"><i class="fa fa-download"></i></button>
         </nav>
         <div class="header-center">
             <img src="assets/icons/planet-earth.png" id="earth_img" alt="Icon">
@@ -101,6 +103,16 @@
             <div id="lat_lng_combined"></div>
         </div>
 
+        <!-- Download Map Panel -->
+        <div id="downloadPanel" class="download-panel">
+            <div class="download-content">
+                <span id="closeDownloadPanel" class="download-panel-close-btn">&times;</span>
+                <h3>Select Download Option</h3>
+                <button id="downloadImg">Download as Image</button>
+                <button id="downloadPdf">Download as PDF</button>
+            </div>
+        </div>
+
     </div>
     <footer>
         <!-- &copy; 2025 Map Project -->
@@ -139,6 +151,10 @@
 
     <!-- MiniMap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <script type="module" src="js/main.js"></script>
     <!-- <script src="js/layers.js"></script>

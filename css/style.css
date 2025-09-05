@@ -209,7 +209,7 @@ footer {
     z-index: 1000;
     background-color: #333;
     padding: 0.4rem;
-    top: 1rem;
+    top: 0.6rem;
     right: 0.9%;
     border-radius: 0.2rem;
     border: none;
@@ -323,7 +323,7 @@ footer {
 }
 
 .leaflet-top.leaflet-right {
-    margin-top: 4rem;
+    margin-top: 3.4rem;
 }
 
 .leaflet-bar-part {
@@ -334,4 +334,62 @@ footer {
 .leaflet-control-locate-location-arrow {
     width: 0.7rem;
     height: 0.7rem;
+}
+
+#downloadPanelBtn {
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+
+.download-panel {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: #333; */
+    backdrop-filter: blur(0.2rem);
+    background-color: rgba(0,0,0,0.4);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.download-content {
+    background-color: #333;
+    color: white;
+    margin-top: 15rem;
+    margin-left: 30rem;
+    padding: 1rem;
+    width: 20rem;
+    height: 6rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    box-shadow: 0 0.5rem 2rem rgb(0,0,0,0.4);
+    font-size: 0.9rem;
+}
+
+.download-panel-close-btn {
+    float: right;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.download-content button {
+    /* display: block; */
+    margin: 0.1rem auto;
+    padding: 0.4rem;
+    border: none;
+    border-radius: 0.2rem;
+    background-color: #555;
+    color: white;
+    cursor: pointer;
+}
+
+.download-content button:hover {
+    background-color: #777;
 }
